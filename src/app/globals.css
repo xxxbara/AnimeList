@@ -12,12 +12,15 @@
 
 img {
   width: 100%;
+  min-height: 300px;
+  max-height: 350px;
   height: auto;
   transition: 0.4s ease-all;
   --webkit-transition: 0.4s ease-all;
   -moz-transition: 0.4s ease-all;
   -ms-transition: 0.4s ease-all;
   -o-transition: 0.4s ease-all;
+  object-fit: cover;
 }
 
 img:hover {
