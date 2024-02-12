@@ -1,5 +1,5 @@
-import Link from "next/link";
 import AnimeList from "@/components/AnimeList";
+import Header from "@/components/AnimeList/header";
 
 const Home = async () => {
   const response = await fetch(
@@ -7,31 +7,21 @@ const Home = async () => {
   );
 
   const animeResponse = await response.json();
-  const animeData = animeResponse.data.slice(0, 8);
+  const topAnime = animeResponse.data.slice(0, 8);
 
   return (
-    <div>
-      <div className="p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Most Popular</h1>
-        <Link
-          className="md:text-xl text-md underline hover:text-indigo-500 transition-all"
-          href="/popular"
-        >
-          See All
-        </Link>
-      </div>
-      <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4">
-        {animeData.map((data) => (
-          <div key={data.mal_id} className="shadow-xl ">
-            <AnimeList
-              title={data.title}
-              images={data.images.webp.image_url}
-              id={data.mal_id}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+      {/* Popular Anime */}
+      <section>
+        <Header title="Most Popular" linkHref="/popular" linkTitle="See All" />
+        <AnimeList api={topAnime} />
+      </section>
+      {/* Latest Anime */}
+      <section>
+        <Header title="Latest" linkHref="/latest" linkTitle="See All" />
+        <AnimeList api={topAnime} />
+      </section>
+    </>
   );
 };
 
