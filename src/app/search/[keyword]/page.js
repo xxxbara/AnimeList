@@ -1,5 +1,5 @@
-import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
+import AnimeSearchList from "@/components/AnimeSearchList";
 
 const Page = async ({ params }) => {
   const { keyword } = params;
@@ -7,14 +7,13 @@ const Page = async ({ params }) => {
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`
   );
 
-  const animeResponse = await response.json();
-  const searchAnime = animeResponse.data.slice(0, 8);
+  const animeList = await response.json();
 
   return (
     <>
       <section>
         <Header title={`Result for ${keyword}`} />
-        <AnimeList api={searchAnime} />
+        <AnimeSearchList api={animeList} />
       </section>
     </>
   );
