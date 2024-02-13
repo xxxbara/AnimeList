@@ -10,8 +10,10 @@ const InputSearch = () => {
 
   const handleSearch = (e) => {
     if (e) e.preventDefault();
-    const keyword = searchRef.current.value;
-    router.push(`/search/${keyword}`);
+    const keyword = searchRef.current.value.trim(); 
+    if (keyword.length > 0) {
+      router.push(`/search/${keyword}`);
+    }
   };
 
   const handleKeyPress = (e) => {
