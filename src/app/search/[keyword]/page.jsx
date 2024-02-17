@@ -1,5 +1,5 @@
 import Header from "@/components/AnimeList/Header";
-import AnimeSearchList from "@/components/AnimeSearchList";
+import AnimeSearchListWithoutSlice from "@/components/AnimeListWithoutSlice";
 
 const Page = async ({ params }) => {
   const { keyword } = params;
@@ -14,7 +14,7 @@ const Page = async ({ params }) => {
     <>
       <section>
         <Header title={`Result for ${decodedKeyword}`} />
-        <AnimeSearchList api={animeList} />
+        <AnimeSearchListWithoutSlice api={animeList} />
       </section>
     </>
   );
