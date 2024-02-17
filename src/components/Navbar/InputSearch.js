@@ -9,16 +9,13 @@ const InputSearch = () => {
   const router = useRouter();
 
   const handleSearch = (e) => {
-    if (e) e.preventDefault();
-    const keyword = searchRef.current.value.trim(); 
-    if (keyword.length > 0) {
-      router.push(`/search/${keyword}`);
-    }
-  };
+    const keyword = searchRef.current.value.trim();
 
-  const handleKeyPress = (e) => {
-    if (e && e.key === "Enter") {
-      handleSearch(e);
+    if (!keyword) return;
+
+    if (e.key === "Enter" || e.type === "click") {
+      e.preventDefault();
+      router.push(`/search/${keyword}`);
     }
   };
 
@@ -29,7 +26,7 @@ const InputSearch = () => {
         placeholder="Search anime..."
         className="p-2 rounded w-full"
         ref={searchRef}
-        onKeyUp={handleKeyPress}
+        onKeyDown={handleSearch}
       />
       <button className="absolute top-1.5 end-1" onClick={handleSearch}>
         <MagnifyingGlass size={24} />
