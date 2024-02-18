@@ -1,14 +1,12 @@
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
+import { getAnimeResponse } from "./libs/api-libs";
 
 const Page = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime`
-  );
-
-  const animeResponse = await response.json();
-  const topAnime = animeResponse.data.slice(0, 8);
-
+  
+  const data = await getAnimeResponse("top/anime");
+  const topAnime = data.data.slice(0, 8);
+  
   return (
     <>
       {/* Popular Anime */}
