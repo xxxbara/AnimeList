@@ -1,4 +1,6 @@
 import { getAnimeResponse } from "@/app/libs/api-libs";
+import VideoPlayer from "@/components/Utilities/VideoPlayer";
+import { Play } from "@phosphor-icons/react";
 import Image from "next/image";
 
 const Page = async ({ params: { id } }) => {
@@ -50,6 +52,9 @@ const Page = async ({ params: { id } }) => {
             in HD quality.
           </div>
         </div>
+      </div>
+      <div>
+        <VideoPlayer youtubeId={anime.trailer.youtube_id} />
       </div>
     </>
   );
