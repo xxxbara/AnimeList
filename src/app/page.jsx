@@ -1,6 +1,6 @@
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
-import { getAnimeResponse, getNestedAnimeResponse } from "@/libs/api-libs";
+import { getAnimeResponse, getNestedAnimeResponse, getRandomAnimeWhileReloadThePage } from "@/libs/api-libs";
 
 const Page = async () => {
   const popularAnime = await getAnimeResponse("top/anime");
@@ -11,12 +11,7 @@ const Page = async () => {
     "entry"
   );
 
-  const getRandomAnime = (data, n) => {
-    const anime = data.sort(() => 0.5 - Math.random());
-    return anime.slice(0, n);
-  };
-
-  const recommendedAnimeSlice = getRandomAnime(recommendedAnime, 8);
+  const recommendedAnimeSlice = getRandomAnimeWhileReloadThePage(recommendedAnime, 8);
 
   return (
     <>
