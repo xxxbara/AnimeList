@@ -10,7 +10,6 @@ const Page = async () => {
     "recommendations/anime",
     "entry"
   );
-
   const recommendedAnimeSlice = getRandomAnimeWhileReloadThePage(recommendedAnime, 8);
 
   return (
