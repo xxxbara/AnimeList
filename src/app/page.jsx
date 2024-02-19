@@ -10,8 +10,13 @@ const Page = async () => {
     "recommendations/anime",
     "entry"
   );
-  const recommendedAnimeSlice = recommendedAnime.slice(0, 8);
-  // console.log(recommendedAnime);
+
+  const getRandomAnime = (data, n) => {
+    const anime = data.sort(() => 0.5 - Math.random());
+    return anime.slice(0, n);
+  };
+
+  const recommendedAnimeSlice = getRandomAnime(recommendedAnime, 8);
 
   return (
     <>
