@@ -1,4 +1,4 @@
-import { getAnimeResponse } from "@/app/libs/api-libs";
+import { getAnimeResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import { Play } from "@phosphor-icons/react";
 import Image from "next/image";
@@ -38,10 +38,10 @@ const Page = async ({ params: { id } }) => {
               Type: {anime.type}
             </h3>
             <h3 className="p-3 rounded border border-color-primary">
-              Episodes: {anime.episodes}
+              Episode: {anime.episodes}
             </h3>
             <h3 className="p-3 rounded border border-color-primary">
-              Genres: {anime.genres.map((genre) => genre.name).join(", ")}
+              Genre: {anime.genres.map((genre) => genre.name).join(", ")}
             </h3>{" "}
           </div>
           <div className="mt-4">
