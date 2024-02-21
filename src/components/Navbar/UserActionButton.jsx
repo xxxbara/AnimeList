@@ -1,16 +1,16 @@
+import { authUserSession } from "@/libs/auth-libs";
 import Link from "next/link";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const UserActionButton = async () => {
-  const user = await getServerSession(authOptions);
-  console.log(user);
+  const user = await authUserSession();
+  const actionLabel = user ? "Sign Out" : "Sign In";
+  const actionUrl = user ? "api/auth/signout" : "api/auth/signin";
 
   return (
-    <div>
-      {" "}
-      <Link href="/api/auth/signin" className="">
-        Sign In
+    <div className="flex gap-2 justify-between">
+      {user ? <Link href="/users/dashboard" className="py-1">Dashboard</Link> : null}
+      <Link href={actionUrl} className="hover:bg-color-secondary bg-color-dark transition-all py-1 px-12 inline-block text-color-primary rounded-lg" >
+        {actionLabel}
       </Link>
     </div>
   );

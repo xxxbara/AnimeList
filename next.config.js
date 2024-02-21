@@ -5,8 +5,11 @@ const nextConfig = {
       {
         hostname: "cdn.myanimelist.net",
       },
+      {
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
