@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-img {
+.anime-img {
   width: 100%;
   min-height: 300px;
   max-height: 350px;
@@ -23,7 +23,7 @@ img {
   object-fit: cover;
 }
 
-img:hover {
+.anime-img:hover {
   scale: 102%;
 }
 

@@ -15,6 +15,7 @@ const AnimeList = ({ api }) => {
               width={350}
               height={350}
               src={anime.images.webp.image_url}
+              className="anime-img"
               alt="..."
             />
             <h3 className="font-bold md:text-xl text-md p-4 ">{anime.title}</h3>
