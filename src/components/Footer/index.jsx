@@ -4,7 +4,8 @@ const Footer = () => {
       <div className="mt-4 border-t border-gray-700">
         <div className="container mx-auto text-center px-4 py-4">
           <p>
-            Copyright &copy; {new Date().getFullYear()} RyAnime. All Rights
+            Copyright &copy; {new Date().getFullYear()}{" "}
+            <span className="text-color-accent">RyAnime</span>. All Rights
             Reserved.
           </p>
         </div>
