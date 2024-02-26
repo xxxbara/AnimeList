@@ -5,7 +5,7 @@ import { useState } from "react";
 import YouTube from "react-youtube";
 
 const VideoPlayer = ({ youtubeId }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleVideoPlayer = () => {
     setIsOpen((prevState) => !prevState);
@@ -37,17 +37,20 @@ const VideoPlayer = ({ youtubeId }) => {
 
   const OpenButton = () => {
     return (
-      <button
-        onClick={handleVideoPlayer}
-        className="fixed bottom-5 right-5 p-3 bg-color-primary text-color-dark rounded-full flex gap-2 justify-center items-center hover:bg-color-accent transition-all shadow-xl"
-      >
-        <Play size={22} />
-        Watch Trailer
-      </button>
+      <>
+        <button
+          onClick={handleVideoPlayer}
+          className="p-2.5 bg-color-primary text-color-dark rounded-3xl flex gap-1.5 justify-center items-center hover:bg-color-accent transition-all shadow-xl"
+        >
+          <Play size={22} />
+          Watch Trailer
+        </button>
+        {isOpen && <CloseButton />}
+      </>
     );
   };
 
-  return isOpen ? <CloseButton /> : <OpenButton />;
+  return <OpenButton />;
 };
 
 export default VideoPlayer;

@@ -1,7 +1,7 @@
 import { getAnimeResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
-import { Play } from "@phosphor-icons/react";
 import Image from "next/image";
+import SaveButton from "@/components/Utilities/SaveButton";
 
 const Page = async ({ params: { id } }) => {
   const response = await getAnimeResponse(`anime/${id}`);
@@ -14,16 +14,20 @@ const Page = async ({ params: { id } }) => {
           {anime.title} - {anime.year}
         </h3>
       </div>
-      <div className="pt-4 px-4 flex sm:flex-nowrap flex-wrap gap-2 text-color-primary">
+      <div className="pt-4 px-4 flex sm:flex-nowrap flex-wrap gap-4 text-color-primary">
         <Image
           src={anime.images.webp.image_url}
           alt={anime.images.jpg.image_url}
           width={250}
           height={250}
-          className="w-full rounded object-cover"
+          className="detail-anime  mt-2"
         />
         <div>
-          <div>
+          <div className="flex gap-4">
+            <VideoPlayer youtubeId={anime.trailer.youtube_id} />
+            <SaveButton />
+          </div>
+          <div className="mt-2">
             <h3 className="text-xl">Overview:</h3>
             <p className="text-justify">{anime.synopsis}</p>
           </div>
@@ -53,9 +57,8 @@ const Page = async ({ params: { id } }) => {
           </div>
         </div>
       </div>
-      <div>
-        <VideoPlayer youtubeId={anime.trailer.youtube_id} />
-      </div>
+      {/* <div>
+      </div> */}
     </>
   );
 };
