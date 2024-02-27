@@ -4,7 +4,7 @@ import { getAnimeResponse, getNestedAnimeResponse, getRandomAnimeWhileReloadTheP
 
 const Page = async () => {
   const popularAnime = await getAnimeResponse("top/anime");
-  const topAnime = popularAnime.data.slice(0, 8);
+  const topAnime = popularAnime.slice(0, 8);
 
   const recommendedAnime = await getNestedAnimeResponse(
     "recommendations/anime",

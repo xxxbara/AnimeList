@@ -4,12 +4,12 @@ export const getAnimeResponse = async (resource, query) => {
   );
   const anime = await response.json();
 
-  return anime;
+  return anime.data;
 };
 
 export const getNestedAnimeResponse = async (resource, objectProperty) => {
   const response = await getAnimeResponse(resource);
-  return response.data.flatMap((result) => result.entry);
+  return response.flatMap((result) => result.entry);
 };
 
 export const getRandomAnimeWhileReloadThePage = (data, n) => {

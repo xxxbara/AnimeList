@@ -3,10 +3,16 @@ import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
 import SaveButton from "@/components/Utilities/SaveButton";
 import SynopsisAnimeOverview from "@/components/Utilities/SynopsisAnimeOverview";
+import { authUserSession } from "@/libs/auth-libs";
+import prisma from "@/libs/prisma";
 
 const Page = async ({ params: { id } }) => {
-  const response = await getAnimeResponse(`anime/${id}`);
-  const anime = response.data;
+  const anime = await getAnimeResponse(`anime/${id}`);
+  const user = await authUserSession();
+
+  const collection = await prisma.collection.findFirst({
+    where: { user_email: user?.email, anime_mal_id: id },
+  });
 
   return (
     <>
@@ -26,7 +32,9 @@ const Page = async ({ params: { id } }) => {
         <div>
           <div className="flex gap-4">
             <VideoPlayer youtubeId={anime.trailer.youtube_id} />
-            <SaveButton />
+            {!collection && user && (
+              <SaveButton anime_mal_id={id} user_email={user?.email} />
+            )}
           </div>
           <div className="mt-2">
             <SynopsisAnimeOverview anime={anime} />
