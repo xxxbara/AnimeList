@@ -2,6 +2,7 @@ import { getAnimeResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
 import SaveButton from "@/components/Utilities/SaveButton";
+import SynopsisAnimeOverview from "@/components/Utilities/SynopsisAnimeOverview";
 
 const Page = async ({ params: { id } }) => {
   const response = await getAnimeResponse(`anime/${id}`);
@@ -20,7 +21,7 @@ const Page = async ({ params: { id } }) => {
           alt={anime.images.jpg.image_url}
           width={250}
           height={250}
-          className="detail-anime  mt-2"
+          className="detail-anime"
         />
         <div>
           <div className="flex gap-4">
@@ -28,8 +29,7 @@ const Page = async ({ params: { id } }) => {
             <SaveButton />
           </div>
           <div className="mt-2">
-            <h3 className="text-xl">Overview:</h3>
-            <p className="text-justify">{anime.synopsis}</p>
+            <SynopsisAnimeOverview anime={anime} />
           </div>
           <div className="mt-3 text-xsm sm:flex gap-4 text-color-accent">
             <h3 className="p-3 rounded border border-color-primary">
