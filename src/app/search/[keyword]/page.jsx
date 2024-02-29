@@ -1,6 +1,6 @@
 import { getAnimeResponse } from "@/libs/api-libs";
 import Header from "@/components/AnimeList/Header";
-import AnimeListWithoutSlice from "@/components/AnimeListWithoutSlice";
+import AnimeList from "@/components/AnimeList";
 
 const Page = async ({ params }) => {
   const { keyword } = params;
@@ -11,7 +11,7 @@ const Page = async ({ params }) => {
     <>
       <section>
         <Header title={`Result for ${decodedKeyword}`} />
-        <AnimeListWithoutSlice api={animeList} />
+        <AnimeList api={animeList} />
       </section>
     </>
   );
