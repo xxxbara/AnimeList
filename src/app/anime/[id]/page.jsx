@@ -33,7 +33,12 @@ const Page = async ({ params: { id } }) => {
           <div className="flex gap-4">
             <VideoPlayer youtubeId={anime.trailer.youtube_id} />
             {!collection && user && (
-              <SaveButton anime_mal_id={id} user_email={user?.email} />
+              <SaveButton
+                anime_mal_id={id}
+                user_email={user?.email}
+                anime_title={anime.title}
+                anime_image={anime.images.webp.image_url}
+              />
             )}
           </div>
           <div className="mt-2">
