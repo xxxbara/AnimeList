@@ -6,6 +6,7 @@ const SaveButton = ({ user_email, anime_mal_id, anime_image, anime_title }) => {
   const [isCreated, setIsCreated] = useState(false);
 
   const handleCollection = async (event) => {
+    event.preventDefault()
     const data = { user_email, anime_mal_id, anime_image, anime_title };
     const response = await fetch("/api/v1/collection", {
       method: "POST",
@@ -15,6 +16,7 @@ const SaveButton = ({ user_email, anime_mal_id, anime_image, anime_title }) => {
     if (collection.status === 200) {
       setIsCreated(true);
     }
+    return
   };
 
   return (

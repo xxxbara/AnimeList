@@ -5,6 +5,7 @@ import SaveButton from "@/components/Utilities/SaveButton";
 import SynopsisAnimeOverview from "@/components/Utilities/SynopsisAnimeOverview";
 import { authUserSession } from "@/libs/auth-libs";
 import prisma from "@/libs/prisma";
+import CommentInput from "@/components/AnimeList/CommentInput";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
@@ -61,17 +62,24 @@ const Page = async ({ params: { id } }) => {
               Genre: {anime.genres.map((genre) => genre.name).join(", ")}
             </h3>{" "}
           </div>
-          <div className="mt-4">
-            RyAnime is a site to watch online anime like Anime{" "}
-            <span className="font-bold text-color-accent">{anime.title}</span>{" "}
-            online, or you can even watch{" "}
-            <span className="font-bold text-color-accent">{anime.title}</span>{" "}
-            in HD quality.
-          </div>
         </div>
       </div>
-      {/* <div>
-      </div> */}
+      <div className="px-4 py-4">
+        <div className="px-4 py-2 text-color-primary bg-color-secondary rounded-sm">
+          <h3 className="text-xl">Comment</h3>
+          <hr className="mt-2" />
+          <div className="py-4 ">
+            <CommentInput anime_mal_id={id} user_email={user?.email} username={user?.name} anime_title={anime.title} />
+          </div>
+        </div>
+        <div className="px-4 py-2 text-color-primary">
+          RyAnime is a site to watch online anime like Anime{" "}
+          <span className="font-bold text-color-accent">{anime.title}</span>{" "}
+          online, or you can even watch{" "}
+          <span className="font-bold text-color-accent">{anime.title}</span> in
+          HD quality.
+        </div>
+      </div>
     </>
   );
 };
