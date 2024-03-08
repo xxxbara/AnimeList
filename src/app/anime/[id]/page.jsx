@@ -6,6 +6,7 @@ import SynopsisAnimeOverview from "@/components/Utilities/SynopsisAnimeOverview"
 import { authUserSession } from "@/libs/auth-libs";
 import prisma from "@/libs/prisma";
 import CommentInput from "@/components/AnimeList/CommentInput";
+import CommentList from "@/components/AnimeList/CommentList";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
@@ -70,6 +71,7 @@ const Page = async ({ params: { id } }) => {
           <hr className="mt-2" />
           <div className="py-4 ">
             <CommentInput anime_mal_id={id} user_email={user?.email} username={user?.name} anime_title={anime.title} />
+            <CommentList anime_mal_id={id} />
           </div>
         </div>
         <div className="px-4 py-2 text-color-primary">

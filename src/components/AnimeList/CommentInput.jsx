@@ -21,6 +21,7 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
     const postComment = await response.json();
     if (postComment.status === 200) {
       setIsCreated(true);
+      setComment("");
     }
     return;
   };
@@ -33,12 +34,13 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
           <input
             type="text"
             onChange={handleInput}
-            className="w-full rounded-md"
+            value={comment}
+            className="w-full rounded-md p-4"
             placeholder="add a comment..."
           />
           <button
             onClick={handlePostComment}
-            className="w-52 py-2 px-3 bg-color-accent flex justify-center rounded-md"
+            className="w-52 py-2 px-3 bg-color-accent flex justify-center items-center rounded-md"
           >
             <PaperPlaneRight size={32} />
           </button>
