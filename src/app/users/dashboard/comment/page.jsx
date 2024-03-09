@@ -19,7 +19,7 @@ const Page = async () => {
             <Link
               key={index}
               href={`/anime/${comment.anime_mal_id}`}
-              className="w-full border-2 p-2 bg-color-primary rounded-sm"
+              className="w-full border-2 p-2 bg-color-primary rounded-lg"
             >
               <h2 className="text-xl">{comment.anime_title}</h2>
               <p>{comment.comment}</p>
