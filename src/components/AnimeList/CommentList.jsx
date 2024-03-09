@@ -5,14 +5,16 @@ const CommentList = async ({ anime_mal_id }) => {
   const comments = await prisma.comment.findMany({
     where: { anime_mal_id },
   });
-  console.log(comments);
 
   return (
     <div>
       {comments.map((comment) => {
         return (
-          <div key={comment.id} className="text-color-primary">
-            <p>{comment.username}</p>
+          <div
+            key={comment.id}
+            className="text-color-primary border-color-primary border-2 p-2 m-2 w-[300px] rounded-md"
+          >
+            <p className="text-xl font-bold">{comment.username}</p>
             <p>{comment.comment}</p>
           </div>
         );

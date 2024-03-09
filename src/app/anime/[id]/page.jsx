@@ -66,14 +66,31 @@ const Page = async ({ params: { id } }) => {
         </div>
       </div>
       <div className="px-4 py-4">
-        <div className="px-4 py-2 text-color-primary bg-color-secondary rounded-sm">
-          <h3 className="text-xl">Comment</h3>
+        <div className="px-4 py-2 text-color-primary bg-color-secondary rounded-sm ">
+          <h3 className="text-xl font-bold">Comment</h3>
+          {!user && (
+            <h4 className="text-sm text-color-accent ">
+              SIGN IN FIRST IF YOU WANT TO COMMENT!!!
+            </h4>
+          )}
           <hr className="mt-2" />
-          <div className="py-4 ">
-            <CommentInput anime_mal_id={id} user_email={user?.email} username={user?.name} anime_title={anime.title} />
-            <CommentList anime_mal_id={id} />
+          <div className="py-4 flex flex-col justify-between h-[400px]">
+            <div className="overflow-y-auto max-h-auto relative">
+              <CommentList anime_mal_id={id} />
+            </div>
+            {user && (
+              <div className="sticky bottom-0">
+                <CommentInput
+                  anime_mal_id={id}
+                  user_email={user?.email}
+                  username={user?.name}
+                  anime_title={anime.title}
+                />
+              </div>
+            )}
           </div>
         </div>
+
         <div className="px-4 py-2 text-color-primary">
           RyAnime is a site to watch online anime like Anime{" "}
           <span className="font-bold text-color-accent">{anime.title}</span>{" "}

@@ -1,11 +1,14 @@
 "use client";
 
 import { PaperPlaneRight } from "@phosphor-icons/react/dist/ssr";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
   const [comment, setComment] = useState("");
   const [isCreated, setIsCreated] = useState(false);
+
+  const router = useRouter();
 
   const handleInput = (event) => {
     setComment(event.target.value);
@@ -22,6 +25,7 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
     if (postComment.status === 200) {
       setIsCreated(true);
       setComment("");
+      router.refresh();
     }
     return;
   };
