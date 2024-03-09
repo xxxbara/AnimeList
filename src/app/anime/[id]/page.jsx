@@ -74,7 +74,7 @@ const Page = async ({ params: { id } }) => {
             </h4>
           )}
           <div className="py-2 flex flex-col justify-between h-[450px]">
-            <div className="overflow-y-auto max-h-auto relative border-2">
+            <div className="overflow-y-auto h-[350px] relative border-2">
               <CommentList anime_mal_id={id} />
             </div>
             {user && (

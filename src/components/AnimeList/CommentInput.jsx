@@ -7,15 +7,24 @@ import { useState } from "react";
 const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
   const [comment, setComment] = useState("");
   const [isCreated, setIsCreated] = useState(false);
+  const [error, setError] = useState(false);
+  const [isNotError, setIsNotError] = useState(false);
 
   const router = useRouter();
 
   const handleInput = (event) => {
     setComment(event.target.value);
+    setError("");
   };
 
   const handlePostComment = async (event) => {
     event.preventDefault();
+    if (comment.trim() === "") {
+      setError(true);
+      setIsNotError(false);
+      return;
+    }
+
     const data = { user_email, anime_mal_id, comment, username, anime_title };
     const response = await fetch("/api/v1/comment", {
       method: "POST",
@@ -24,8 +33,10 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
     const postComment = await response.json();
     if (postComment.status === 200) {
       setIsCreated(true);
+      setIsNotError(true);
       setComment("");
       router.refresh();
+      setError(false);
     }
     return;
   };
@@ -33,7 +44,10 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
   return (
     <>
       <div>
-        {isCreated && <p className="text-color-primary">Comment added...</p>}
+        {error && <p className="text-color-error">Comment cannot be empty!!</p>}
+        {isCreated && isNotError && (
+          <p className="text-color-primary">Comment added...</p>
+        )}
         <div className="flex :flex-col gap-2 text-color-dark">
           <input
             type="text"
