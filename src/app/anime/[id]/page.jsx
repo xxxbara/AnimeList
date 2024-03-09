@@ -67,19 +67,18 @@ const Page = async ({ params: { id } }) => {
       </div>
       <div className="px-4 py-4">
         <div className="px-4 py-2 text-color-primary bg-color-secondary rounded-sm ">
-          <h3 className="text-xl font-bold">Comment</h3>
+          <h3 className="text-2xl">Comment</h3>
           {!user && (
             <h4 className="text-sm text-color-accent ">
               SIGN IN FIRST IF YOU WANT TO COMMENT!!!
             </h4>
           )}
-          <hr className="mt-2" />
-          <div className="py-4 flex flex-col justify-between h-[400px]">
-            <div className="overflow-y-auto max-h-auto relative">
+          <div className="py-2 flex flex-col justify-between h-[450px]">
+            <div className="overflow-y-auto max-h-auto relative border-2">
               <CommentList anime_mal_id={id} />
             </div>
             {user && (
-              <div className="sticky bottom-0">
+              <div className="sticky bottom-0 mt-2">
                 <CommentInput
                   anime_mal_id={id}
                   user_email={user?.email}

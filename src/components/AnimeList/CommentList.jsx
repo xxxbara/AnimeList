@@ -12,7 +12,7 @@ const CommentList = async ({ anime_mal_id }) => {
         return (
           <div
             key={comment.id}
-            className="text-color-primary border-color-primary border-2 p-2 m-2 w-[300px] rounded-md"
+            className="text-color-primary border-color-accent border-2 p-2 m-2 w-[300px] rounded-md"
           >
             <p className="text-xl font-bold">{comment.username}</p>
             <p>{comment.comment}</p>
