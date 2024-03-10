@@ -11,11 +11,15 @@ const Page = async () => {
   });
 
   return (
-    <section className="mt-2 p-4 w-full">
+    <section className="mt-2 p-4 w-full h-[70vh] ">
       <Header title="My Comment" />
-      <div className="text-color-dark grid gap-4 sm:grid-cols-1 lg:grid-cols-2 py-4">
-        {comments.map((comment, index) => {
-          return (
+      {comments.length === 0 ? (
+        <div className="flex items-center justify-center">
+          <h1 className="text-2xl text-color-primary ">You haven't comment yet</h1>
+        </div>
+      ) : (
+        <div className="text-color-dark grid gap-4 sm:grid-cols-1 lg:grid-cols-2 py-4">
+          {comments.map((comment, index) => (
             <Link
               key={index}
               href={`/anime/${comment.anime_mal_id}`}
@@ -24,9 +28,9 @@ const Page = async () => {
               <h2 className="text-xl">{comment.anime_title}</h2>
               <p>{comment.comment}</p>
             </Link>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
