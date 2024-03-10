@@ -48,7 +48,7 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title }) => {
         {isCreated && isNotError && (
           <p className="text-color-primary">Comment added...</p>
         )}
-        <div className="flex :flex-col gap-2 text-color-dark">
+        <div className="flex gap-2 text-color-dark">
           <input
             type="text"
             onChange={handleInput}

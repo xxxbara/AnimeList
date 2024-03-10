@@ -78,7 +78,7 @@ const Page = async ({ params: { id } }) => {
               <CommentList anime_mal_id={id} />
             </div>
             {user && (
-              <div className="sticky bottom-0 mt-2">
+              <div className="bottom-0 mt-2">
                 <CommentInput
                   anime_mal_id={id}
                   user_email={user?.email}
